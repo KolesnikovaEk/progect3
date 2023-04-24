@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Пройти опрос для нахождения мест</h1>
+
+    <a href="ques" class="btn btn-secondary">Пройти опрос</a>
+
+    {% for item in ques %}
+
+        <div class="col-md6 border rounded">
+
+            <div> Нравится ли вам достопримечательности - {{ item.que1}} </div>
+            <div> Нравится ли вам театр - {{ item.que2 }} </div>
+            <div> Нравится ли вам природа - {{ item.que3 }} </div>
+            {% if current_user.is_authenticated and current_user == item.user %}
+                <div>
+                    <a href="/ques/{{ item.id }}" class="btn btn-warning">Изменить</a>
+                </div>
+            {% endif %}
+        </div>
+
+    {% endfor %}
+    <p></p>
+    <a href="/map" class="btn btn-secondary">Построить маршрут</a> <a href="/file_upload" class="btn btn-secondary">Загрузить свою картинку</a>
+    <p></p>
+    <p></p>
+    <img src = "static/img/result.png" tab="photo" style="position:absolute;left:50px;right:200px" width=700 height=300>
+
+{% endblock %}

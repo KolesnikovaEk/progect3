@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Опрос</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+
+
+
+        </p>
+        <p> {{ form.que1.label }} {{ form.que1() }}</p>
+        <p> {{ form.que2.label }} {{ form.que2() }}</p>
+        <p> {{ form.que3.label }} {{ form.que3() }}</p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        {{ message }}
+    </form>
+{% endblock %}
