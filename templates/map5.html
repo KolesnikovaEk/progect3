@@ -146,7 +146,9 @@ var firstAnimatedLine = new ymaps.AnimatedLine([
     myMap.geoObjects.add(firstAnimatedLine);
     myMap.geoObjects.add(secondAnimatedLine);
     // Создаем метки.
-    var firstPoint = new ymaps.Placemark([55.79901400, 37.67481600], {}, {
+    var firstPoint = new ymaps.Placemark([55.79901400, 37.67481600], {
+            balloonContent: '<strong>Парк Сокольники</strong>'
+        }, {
         preset: 'islands#blueVegetationIcon'
     });
     var secondPoint = new ymaps.Placemark([55.760278, 37.618611], {
