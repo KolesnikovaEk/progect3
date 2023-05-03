@@ -47,7 +47,7 @@ def map():
         return render_template('map1.html', coord_theatre_1 = [55.760278, 37.618611], coord_nature_1 = [55.73133, 37.60328],
                                coord_dost_1 = [55.75167, 37.61778])
     if result[0][0] == 'нет' and result[0][1] == 'нет' and result[0][2] == 'нет':
-        return render_template('map11.html', coord_theatre_1=[], coord_nature_1=[],
+        return render_template('map11.html', coord_theatre_1=[44, 55], coord_nature_1=[],
                                coord_dost_1=[])
     if result[0][0] == 'да' and result[0][1] == 'да' and result[0][2] == 'нет':
         return render_template('map2.html', coord_theatre_1 = [55.760278, 37.618611], coord_dost_1 = [55.75167, 37.61778],

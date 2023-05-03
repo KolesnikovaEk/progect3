@@ -122,10 +122,61 @@ ymaps.ready(['AnimatedLine']).then(init);
     }, {
         searchControlProvider: 'yandex#search'
     });
+var geocoordinats_theatres = Array();
+var geocoordinats_theatres = [[55.760278, 37.618611],
+                              [55.756741, 37.6016],
+                              [55.74361, 37.65389],
+                              [55.76035, 37.61296],
+                              [55.75782, 37.61261]]
+
+var geocoordinats_nature = Array();
+var geocoordinats_nature = [[55.73133, 37.60328],
+                            [55.79901400, 37.67481600],
+                            [55.831388, 37.629277],
+                            [55.77426, 37.78473],
+                            [55.61389, 37.68499]]
+
+var geocoordinats_dost = Array();
+var geocoordinats_dost = [[55.75167, 37.61778],
+                          [55.7435, 37.618778],
+                          [55.725972, 37.556583],
+                          [55.81972, 37.61167],
+                          [55.76444, 37.59114]]
+
+
+var name_theatres = Array()
+var name_theatres = ['Большой театр', 'Театр им. Вл. Маяковского', 'Театр на Таганке',
+                    'Московский художественный театр им. А. П. Чехова', 'Театр им. М.Н.Ермолиной']
+
+var name_narure = Array()
+var name_nature = ['Парк Горького', 'Парк Сокольники', 'ВДНХ', 'Измайловский лесопарк', 'Царицыно']
+
+var name_dost = Array()
+var name_dost = ['Московский Кремль', 'Третьяковская Галерея', 'Новодевичий монастырь','Российская телевизионная и радиовещательная сеть',
+'Патриаршие пруды']
+
+function getRandom(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function getRandomElement(arr){
+  const randomIndex = getRandom(arr.length);
+  return arr[randomIndex]
+}
+
+
+var a = getRandomElement(geocoordinats_theatres);
+var b = getRandomElement(geocoordinats_theatres);
+var c = getRandomElement(geocoordinats_dost);
+
+var ind_a = geocoordinats_theatres.indexOf(a)
+var ind_b = geocoordinats_thaetres.indexOf(b)
+var ind_c = geocoordinats_dost.indexOf(c)
+
 
 var firstAnimatedLine = new ymaps.AnimatedLine([
-        [55.760278, 37.618611],
-        [55.75167, 37.61778]
+        a,
+        b
     ], {}, {
         // Задаем цвет.
         strokeColor: "#ED4543",
@@ -135,8 +186,8 @@ var firstAnimatedLine = new ymaps.AnimatedLine([
         animationTime: 4000
     });
     var secondAnimatedLine = new ymaps.AnimatedLine([
-        [55.75167, 37.61778],
-        [55.756741, 37.6016]
+        b,
+        c
     ], {}, {
         strokeColor: "#1E98FF",
         strokeWidth: 5,
@@ -146,20 +197,20 @@ var firstAnimatedLine = new ymaps.AnimatedLine([
     myMap.geoObjects.add(firstAnimatedLine);
     myMap.geoObjects.add(secondAnimatedLine);
     // Создаем метки.
-    var firstPoint = new ymaps.Placemark([55.760278, 37.618611], {
-            balloonContent: '<strong>Большой театр</strong>'
+    var firstPoint = new ymaps.Placemark(a, {
+            balloonContent: name_theatres[ind_a]
         }, {
         preset: 'islands#blueTheaterIcon'
     });
-    var secondPoint = new ymaps.Placemark([55.75167, 37.61778], {
-            balloonContent: '<strong>Московский Кремль</strong>'
+    var secondPoint = new ymaps.Placemark(b, {
+            balloonContent: name_theatres[ind_b]
+        }, {
+        preset: 'islands#blueVegetationIcon'
+    });
+    var thirdPoint = new ymaps.Placemark(c, {
+            balloonContent: name_dost[ind_c]
         }, {
         preset: 'islands#blueLeisureIcon'
-    });
-    var thirdPoint = new ymaps.Placemark([55.756741, 37.6016], {
-            balloonContent: '<strong>Театр им.Маяковского</strong>'
-        }, {
-        preset: 'islands#blueTheaterIcon'
     });
     // Функция анимации пути.
     function playAnimation() {
